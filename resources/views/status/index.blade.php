@@ -13,9 +13,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                         {{ $s['url'] }} <br />
                         Status Code: {{ $s['status_code']}} <br />
+                        @isset($s['body_response'])
                         <x-nav-link :href="route('render-status', $s['id'])">
                             {{ __('Visualiza corpo da mensagem') }}
                         </x-nav-link>
+                        @endisset
                 </div>
             </div>
         </div>

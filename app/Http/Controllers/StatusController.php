@@ -38,5 +38,11 @@ class StatusController extends Controller
 
     public function render(int $id)
     {
+        $status = $this->statusService->get($id);
+        if (!$status) {
+            abort(404);
+        }
+
+        return view('status.render', ["html" => $status['body_response']]);
     }
 }

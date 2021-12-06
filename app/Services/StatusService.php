@@ -21,4 +21,15 @@ class StatusService
 
         return Status::user($userId)->get()->toArray();
     }
+
+    public function get(int $id): ?array
+    {
+        $status = Status::user(auth()->user()->id)->find($id);
+
+        if (!$status) {
+            return null;
+        }
+
+        return $status->toArray();
+    }
 }
