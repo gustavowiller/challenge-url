@@ -6,14 +6,20 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @foreach ($status as $s)
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="padding-bottom:15px;">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @foreach ($status as $s)
-                        <li>{{$s['url']}}</li>
-                    @endforeach
+                        {{ $s['url'] }} <br />
+                        Status Code: {{ $s['status_code']}} <br />
+                        <x-nav-link :href="route('render-status', $s['id'])">
+                            {{ __('Visualiza corpo da mensagem') }}
+                        </x-nav-link>
                 </div>
             </div>
         </div>
+        @endforeach
+
     </div>
 </x-app-layout>

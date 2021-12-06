@@ -35,4 +35,8 @@ class StatusController extends Controller
 
         return view('status.index', ["status" => $status]);
     }
+
+    public function render(int $id)
+    {
+    }
 }

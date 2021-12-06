@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/status', [StatusController::class, 'store']);
 
     Route::get('/status', [StatusController::class, 'index'])->name('status');
+
+    Route::get('/status/{id}/render', [StatusController::class, 'render'])->name('render-status');
 });
 
 require __DIR__.'/auth.php';
