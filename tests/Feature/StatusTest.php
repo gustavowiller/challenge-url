@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -41,7 +42,10 @@ class StatusTest extends TestCase
             "url" => "http://www.google.com"
         ];
 
+        $this->assertSame(0, Status::count());
         $response = $this->post('/status', $status);
+
+        $this->assertSame(1, Status::count());
         $response->assertRedirect('/status');
     }
 
