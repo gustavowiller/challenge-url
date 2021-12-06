@@ -14,4 +14,9 @@ class Status extends Model
         'url',
         'user_id'
     ];
+
+    public function scopeUser($query, int $userId)
+    {
+        return $query->where("user_id", $userId);
+    }
 }

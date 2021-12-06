@@ -14,4 +14,11 @@ class StatusService
 
         return $status->toArray();
     }
+
+    public function all(): array
+    {
+        $userId = auth()->user()->id;
+
+        return Status::user($userId)->get()->toArray();
+    }
 }
