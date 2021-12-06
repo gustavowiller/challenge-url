@@ -24,15 +24,11 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/status/create', [StatusController::class, 'create']);
+    Route::get('/status/create', [StatusController::class, 'create'])->name('new-status');
 
     Route::post('/status', [StatusController::class, 'store']);
 
-    Route::get('/status', [StatusController::class, 'index']);
+    Route::get('/status', [StatusController::class, 'index'])->name('status');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
