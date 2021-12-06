@@ -29,4 +29,13 @@ class StatusTest extends TestCase
         $response = $this->get('/status/create');
         $response->assertRedirect('/login');
     }
+
+    public function test_a_status_view_can_be_rendered()
+    {
+        $view = $this->withViewErrors([])->view('status.create');
+
+        $view->assertSee('Novo Status');
+        $view->assertSee('Url');
+        $view->assertSee('Salvar');
+    }
 }

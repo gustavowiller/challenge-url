@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/status/create', function () {
-        return "Ok";
-    });
+    Route::get('/status/create', [StatusController::class, 'create']);
 });
 
 // Route::get('/dashboard', function () {
