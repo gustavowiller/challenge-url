@@ -14,6 +14,8 @@
                         {{ $s['url'] }} <br />
                         Status Code: {{ $s['status_code']}} <br />
                         @isset($s['body_response'])
+                        Ultima consulta: {{ $s['lastUpdate'] }} <br />
+
                         <x-nav-link :href="route('render-status', $s['id'])">
                             {{ __('Visualiza corpo da mensagem') }}
                         </x-nav-link>

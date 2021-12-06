@@ -12,8 +12,19 @@ class Status extends Model
     protected $table = "status";
     protected $fillable = [
         'url',
-        'user_id'
+        'user_id',
+        'status_code',
+        'body_response'
     ];
+
+    protected $appends = [
+        'lastUpdate'
+    ];
+
+    public function getLastUpdateAttribute()
+    {
+        return $this->updated_at;
+    }
 
     public function scopeUser($query, int $userId)
     {

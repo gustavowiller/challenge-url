@@ -1,1 +1,1 @@
-{!! $html !!}
+{!! html_entity_decode($html) !!}
