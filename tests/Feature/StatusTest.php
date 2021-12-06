@@ -12,13 +12,7 @@ class StatusTest extends TestCase
 
     public function test_create_status_screen_can_be_rendered()
     {
-        $user = User::factory()->create();
-        $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password'
-        ]);
-
-        $this->assertAuthenticated();
+        $this->authenticate_user();
 
         $response = $this->get('/status/create');
         $response->assertStatus(200);
@@ -37,5 +31,36 @@ class StatusTest extends TestCase
         $view->assertSee('Novo Status');
         $view->assertSee('Url');
         $view->assertSee('Salvar');
+    }
+
+    public function test_post_create_status()
+    {
+        $this->authenticate_user();
+
+        $status = [
+            "url" => "www.google.com"
+        ];
+
+        $response = $this->post('/status', $status);
+        $response->assertRedirect('/status');
+    }
+
+    public function test_get_all_status()
+    {
+        $this->authenticate_user();
+
+        $response = $this->get('/status');
+        $response->assertOk();
+    }
+
+    protected function authenticate_user()
+    {
+        $user = User::factory()->create();
+        $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password'
+        ]);
+
+        $this->assertAuthenticated();
     }
 }

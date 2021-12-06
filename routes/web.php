@@ -25,6 +25,10 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::get('/status/create', [StatusController::class, 'create']);
+
+    Route::post('/status', [StatusController::class, 'store']);
+
+    Route::get('/status', [StatusController::class, 'index']);
 });
 
 // Route::get('/dashboard', function () {
