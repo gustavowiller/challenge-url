@@ -38,11 +38,23 @@ class StatusTest extends TestCase
         $this->authenticate_user();
 
         $status = [
-            "url" => "www.google.com"
+            "url" => "http://www.google.com"
         ];
 
         $response = $this->post('/status', $status);
         $response->assertRedirect('/status');
+    }
+
+    public function test_post_create_status_with_invalid_url()
+    {
+        $this->authenticate_user();
+
+        $status = [
+            "url" => "asdf"
+        ];
+
+        $response = $this->post('/status', $status);
+        $response->assertRedirect('/');
     }
 
     public function test_get_all_status()

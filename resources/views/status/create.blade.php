@@ -6,7 +6,7 @@
             @csrf
 
             <label for="url">Url</label>
-            <input id="url" type="text" class="@error('url') is-invalid @enderror">
+            <input id="url" name="url" type="text" class="@error('url') is-invalid @enderror">
             @error('url')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreStatusRequest;
 
 class StatusController extends Controller
 {
@@ -11,7 +11,7 @@ class StatusController extends Controller
         return view('status.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreStatusRequest $request)
     {
         return redirect('/status');
     }
