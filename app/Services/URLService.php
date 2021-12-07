@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Status;
+use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Psr7\Stream;
 use Illuminate\Support\Facades\Http;
@@ -33,7 +34,8 @@ class URLService
                 "body_response" => htmlentities(
                     $this->readBodyResponse($response->getBody()),
                     ENT_QUOTES
-                )
+                ),
+                "last_update" => Carbon::now()
             ]
         );
 

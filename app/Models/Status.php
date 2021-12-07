@@ -14,17 +14,14 @@ class Status extends Model
         'url',
         'user_id',
         'status_code',
-        'body_response'
+        'body_response',
+        'last_update'
     ];
 
-    protected $appends = [
-        'lastUpdate'
-    ];
-
-    public function getLastUpdateAttribute()
-    {
-        return $this->updated_at;
-    }
+    // public function getLastUpdateAttribute()
+    // {
+    //     return $this->updated_at;
+    // }
 
     public function scopeUser($query, int $userId)
     {

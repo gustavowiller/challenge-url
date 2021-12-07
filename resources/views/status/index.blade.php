@@ -21,7 +21,7 @@
                         @endisset
                         <br />
 
-                        Ultima consulta: {{ $s['lastUpdate'] }}
+                        Ultima consulta: {{ $s['last_update']}}
                 </div>
             </div>
         </div>
