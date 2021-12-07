@@ -32,7 +32,7 @@ class URLService
             [
                 "status_code" => $response->status(),
                 "body_response" => htmlentities(
-                    $this->readBodyResponse($response->getBody()),
+                    $response->getBody(),
                     ENT_QUOTES
                 ),
                 "last_update" => Carbon::now()
