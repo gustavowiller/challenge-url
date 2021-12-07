@@ -28,4 +28,9 @@
         @endforeach
 
     </div>
+    <script>
+        setTimeout(function(){
+            window.location.reload()
+        }, 5000)
+    </script>
 </x-app-layout>
