@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Status;
 use Carbon\Carbon;
 use Exception;
-use GuzzleHttp\Psr7\Stream;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -31,32 +30,11 @@ class URLService
         $status->fill(
             [
                 "status_code" => $response->status(),
-                "body_response" => htmlentities(
-                    $response->getBody(),
-                    ENT_QUOTES
-                ),
+                "body_response" => htmlentities($response->getBody(), ENT_QUOTES),
                 "last_update" => Carbon::now()
             ]
         );
 
         $status->update();
-    }
-
-    protected function readBodyResponse(Stream $body): string
-    {
-        $bytesRead = 0;
-        $dataRead = "";
-
-        while (!$body->eof()) {
-            $data = $body->read(1024);
-            $dataRead .= $data;
-            $bytesRead += strlen($data);
-
-            if ($bytesRead >= 15*1024) {
-                break;
-            }
-        }
-
-        return $dataRead;
     }
 }
